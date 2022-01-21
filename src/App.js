@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       monsters: [],
       searchField: '',
+      title: '',
     }
 
     // this.handleChangeFunc = this.handleChangeFunc.bind(this)
@@ -22,11 +23,11 @@ class App extends Component {
   }
 
   handleChangeFunc = (e) => {
-    this.setState({ searchField: e.target.value })
+    this.setState({ searchField: e.target.value,title : e.target.value })
   }
 
   render() {
-    const { monsters, searchField } = this.state;
+    const { monsters, searchField ,title} = this.state;
     const filteredMonsters = monsters.filter(monster =>
       monster.name.toLowerCase().includes(searchField.toLowerCase())
     )
@@ -35,6 +36,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Find My Monsters</h1>
+        <h1>▶▶▶ {title} ◀◀◀</h1>
+
+
         <SearchBox
           placeholder="search monster"
           handleChangeFunc={this.handleChangeFunc}
